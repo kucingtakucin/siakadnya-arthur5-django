@@ -10,10 +10,6 @@ class Student(models.Model):
         Teknik_Mesin = 'MS', _('Teknik Mesin')
         Teknik_Industri = 'TI', _('Teknik Industri')
         Teknik_Lingkungan = 'LI', _('Teknik Lingkungan')
-
-        # def __str__(self):
-        #     return self
-        #     pass
         pass
 
     nim = models.CharField(max_length=8, unique=True)
@@ -22,7 +18,7 @@ class Student(models.Model):
     angkatan = models.IntegerField(default=2019)
 
     def __str__(self):
-        return "{} - {} - {} - {}".format(self.nim, self.nama, self.prodi)
+        return "{} - {} - {} - {}".format(self.nim, self.nama, self.prodi, self.angkatan)
         pass
     pass
 

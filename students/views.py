@@ -1,11 +1,21 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .models import Student
 
 
 # Create your views here.
 def index(request):
-    return HttpResponse('Hello, world. Kamu sedang berada di students page')
+    context = {
+        'title': 'Students Page',
+        'students': Student.objects.all()
+    }
+    return render(request, 'students/index.html', context)
 
 
-def detail(request, id):
-    return HttpResponse('Hello, %s' % id)
+def detail(request, student_id):
+    context = {
+        'title': 'Students Page',
+        'student': get_object_or_404(Student, id=student_id)
+    }
+    return render(request, 'students/detail.html', context)
+
